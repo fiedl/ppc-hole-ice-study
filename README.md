@@ -15,12 +15,19 @@ In this basic simulation, a flasher emits photons, and a receiver, which is one 
 
 ## Installation
 
-1. Setup the system and	icetray	as shown in https://github.com/fiedl/ppc-hole-ice-study/issues/1.
+1. Setup the system and	icetray	as shown in [issue #1](https://github.com/fiedl/ppc-hole-ice-study/issues/1)
 2. Clone this repository
 
    ```
    [2021-10-20 10:40:39] fiedl@icecube-ubuntu ~
    ▶ git clone git@github.com:fiedl/ppc-hole-ice-study.git
+   ```
+
+3. Run bundler to install the required ruby gem packages
+
+   ```
+   [2021-10-20 18:32:46] fiedl@icecube-ubuntu ~/ppc-hole-ice-study main
+   ▶ bundle install
    ```
 
 ## Project Steps
