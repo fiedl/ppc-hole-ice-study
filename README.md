@@ -3,6 +3,16 @@ Studying the possibility of direct hole-ice propagation with the ppc photon prop
 
 ## Usage
 
+### Firing Range
+
+In this basic simulation, a flasher emits photons, and a receiver, which is one meter apart, counts incoming photon hits.
+
+```shell
+[2021-10-20 16:09:46] fiedl@icecube-ubuntu ~/ppc-hole-ice-study main
+▶ rake firing_range
+# => photons: 2720  hits: 869
+```
+
 ## Installation
 
 1. Setup the system and	icetray	as shown in https://github.com/fiedl/ppc-hole-ice-study/issues/1.
