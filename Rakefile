@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'benchmark'
 require 'fiedl/log'
 
 require_relative 'lib/ppc_simulation.rb'
@@ -157,14 +158,23 @@ task :firing_range_with_varying_hole_ice_radius => :setup do
       TP6P1297 0x5144dd0bba6c -67.7074 276.892 -1773.64 102 101
     "
 
-    sim.perform "101 101 1.e6 -1"
+    benchmark = Benchmark.measure do
+      sim.perform "101 101 1.e6 -1"
+    end
+    
     sh "cat #{current_sub_run_path}/ppc.log |grep photons |grep hits"
     number_of_hits = `cat #{current_sub_run_path}/hits.txt |grep "102 101"`.split("\n").count
     File.open("#{current_run_path}/hits.txt", 'a') { |file| file << "#{hole_ice_radius} #{number_of_hits}\n" }
+
+    execution_time = benchmark.real
+    File.open("#{current_run_path}/benchmark.txt", 'a') { |file| file << "#{hole_ice_radius} #{execution_time}\n" }
   end
 
   shell "scripts/plot_number_of_hits_vs_hole_ice_radius.py #{current_run_path}"
   log.success "#{current_run_path}/hits.png"
+
+  shell "scripts/plot_execution_time_vs_hole_ice_radius.py #{current_run_path}"
+  log.success "#{current_run_path}/benchmark.png"
 end
 
 task :angular_acceptance_scan => :create_run
