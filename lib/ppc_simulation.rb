@@ -22,7 +22,7 @@ class PpcSimulation < IceTraySimulation
     def execute_ppc(argument)
       shell "export PPCTABLESDIR=#{directory} && " +
             "#{self.class.ppc_path} #{argument} " +
-            "> #{directory}/ppc_hits.txt " +
+            "> #{directory}/hits.txt " +
             "2> #{directory}/ppc.log"
     end
   end
@@ -35,7 +35,7 @@ class PpcSimulation < IceTraySimulation
 
   concerning :ConfigurationFiles do
     def write_configuration_file(filename, content)
-      log.info "  Generating config file #{directory}/#{filename}"
+      FileUtils.mkdir_p directory
       File.write "#{directory}/#{filename}", remove_leading_whitespace(content)
     end
 
@@ -52,7 +52,7 @@ class PpcSimulation < IceTraySimulation
     def import_config_file(filename)
       source = File.join(self.class.icetray_path, "ppc/resources/ice", filename)
       destination = File.join(directory, filename)
-      log.info "  Importing template config #{source}"
+      FileUtils.mkdir_p directory
       FileUtils.cp source, destination
     end
   end

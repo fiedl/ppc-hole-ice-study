@@ -13,6 +13,18 @@ In this basic simulation, a flasher emits photons, and a receiver, which is one 
 # => photons: 2720  hits: 869
 ```
 
+### Varying hole-ice radius
+
+In this simulation, a flasher emits photons, and a receiver, which is one meter apart, counts incoming photon hits. The hole-ice radius is varied and the number of hits is plotted against the hole-ice radius.
+
+```
+[2021-10-20 21:14:52] fiedl@icecube-ubuntu ~/ppc-hole-ice-study main
+▶ rake firing_range_with_varying_hole_ice_radius
+```
+
+See also: [Issue #5](https://github.com/fiedl/ppc-hole-ice-study/issues/5)
+
+
 ## Installation
 
 1. Setup the system and	icetray	as shown in [issue #1](https://github.com/fiedl/ppc-hole-ice-study/issues/1)
